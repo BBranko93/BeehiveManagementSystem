@@ -33,7 +33,7 @@ namespace BeehiveManagementSystem
         {
             float nectarToConvert = amount;
             if (nectarToConvert > nectar) nectarToConvert = nectar;
-            nectar = nectarToConvert;
+            nectar -= nectarToConvert;
             honey += nectarToConvert * NECTAR_CONVERSION_RATIO;
         }
 
@@ -46,9 +46,9 @@ namespace BeehiveManagementSystem
         /// <returns></returns>
         public static bool ConsumeHoney(float amount)
         {
-            if (amount > honey)
+            if (honey >= amount)
             {
-                honey = amount;
+                honey -= amount;
                 return true;
             }
             return false;

@@ -18,7 +18,7 @@ namespace BeehiveManagementSystem
 
         private Bee[] workers = new Bee[0];
         private float eggs = 0;
-        private float unassignedWorkers = 3;
+        private float unassignedWorkers = 5;
 
         public string StatusReport { get; private set; }
         public override float CostPerShift { get { return 2.15F; } }
@@ -46,7 +46,7 @@ namespace BeehiveManagementSystem
         private void UpdateStatusReport()
         {
             StatusReport = $"Vault report:\n{HoneyVault.StatusReport}\n" +
-                $"\nEgg count:{eggs:0.0}\nUnassigned workers: {unassignedWorkers:0.0}\n" +
+                $"\nEgg count: {eggs:0.0}\nUnassigned workers: {unassignedWorkers:0.0}\n" +
                 $"{WorkerStatus("Nectar Collector")}\n{WorkerStatus("Honey Manufacturer")}" +
                 $"\n{WorkerStatus("Egg Care")}\nTOTAL WORKERS: {workers.Length}";
         }
