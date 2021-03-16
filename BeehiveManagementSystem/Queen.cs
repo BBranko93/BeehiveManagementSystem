@@ -21,7 +21,7 @@ namespace BeehiveManagementSystem
         private float unassignedWorkers = 3;
 
         public string StatusReport { get; private set; }
-        public override float CostPerShift { get; { return 2.15F; } }
+        public override float CostPerShift { get { return 2.15F; } }
 
         // Queen starts things off by assigning one bee of each type
         // in her constructor.
@@ -46,9 +46,9 @@ namespace BeehiveManagementSystem
         private void UpdateStatusReport()
         {
             StatusReport = $"Vault report:\n{HoneyVault.StatusReport}\n" +
-                $"/nEgg count:{eggs:0.0}\nUnassigned workers: {unassignedWorkers:0.0}\n" +
+                $"\nEgg count:{eggs:0.0}\nUnassigned workers: {unassignedWorkers:0.0}\n" +
                 $"{WorkerStatus("Nectar Collector")}\n{WorkerStatus("Honey Manufacturer")}" +
-                $"/n{WorkerStatus("Egg Care")}\nTOTAL WORKERS: {workers.Length}";
+                $"\n{WorkerStatus("Egg Care")}\nTOTAL WORKERS: {workers.Length}";
         }
 
         // The EggCare bees call the CareForEggs method to convert eggs into unassigned workers.

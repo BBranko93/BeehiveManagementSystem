@@ -20,19 +20,32 @@ namespace BeehiveManagementSystem
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Queen queen = new Queen();
         public MainWindow()
         {
             InitializeComponent();
+
+            // The code-behind updates that status report TextBox
+            // in the constructor after the buttons are clicked to
+            // make sure the latest report is always displayed.
+            statusReport.Text = queen.StatusReport;
         }
 
         private void WorkShift_Click(object sender, RoutedEventArgs e)
         {
-
+            queen.WorkTheNextShift();
+            statusReport.Text = queen.StatusReport;
         }
 
         private void AssignJob_Click(object sender, RoutedEventArgs e)
         {
+            // The "assign job" button passes the text from the selected
+            // ComboBox item directly to Queen.AssignBee, so it's really
+            // important that the cases in the switch statement
+            // match the ComboBox items exactly.
 
+            queen.AssignBee(jobSelector.Text);
+            statusReport.Text = queen.StatusReport;
         }
     }   
 }
